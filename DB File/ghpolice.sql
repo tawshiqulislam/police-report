@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2022 at 04:21 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 29, 2022 at 10:19 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `archrive`
+--
+
+CREATE TABLE `archrive` (
+  `id` int(11) NOT NULL,
+  `case_id` varchar(10) NOT NULL,
+  `cid` varchar(10) NOT NULL,
+  `report` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `case_table`
 --
 
@@ -37,16 +51,9 @@ CREATE TABLE `case_table` (
   `status` varchar(50) NOT NULL,
   `cid` varchar(20) NOT NULL DEFAULT 'Not Yet',
   `complete_date` date NOT NULL,
-  `diaryofaction` varchar(200) NOT NULL
+  `diaryofaction` varchar(200) NOT NULL,
+  `submit_to_court` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `case_table`
---
-
-INSERT INTO `case_table` (`case_id`, `statement`, `caseid`, `date_added`, `staffid`, `case_type`, `status`, `cid`, `complete_date`, `diaryofaction`) VALUES
-('210728101', '<p>HelLo,</p>\r\n\r\n<p>This CID Officer yahaya and this my findings so for in the case</p>\r\n', 56, '2021-07-28 13:13:49', '333', 'Robbing', 'Completed', '005', '0000-00-00', ' This is case  '),
-('210728102', '', 57, '2021-07-28 13:14:53', '333', 'Assault', '', 'cid', '0000-00-00', 'Here is anotehr acse');
 
 -- --------------------------------------------------------
 
@@ -81,13 +88,6 @@ CREATE TABLE `court` (
   `hearing_info` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `court`
---
-
-INSERT INTO `court` (`id`, `case_id`, `next_hearing_date`, `hearing_info`) VALUES
-(1, 210728101, '0000-00-00', 'pending');
-
 -- --------------------------------------------------------
 
 --
@@ -99,19 +99,19 @@ CREATE TABLE `crime_type` (
   `des` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `crime_type`
+-- Table structure for table `hearings`
 --
 
-INSERT INTO `crime_type` (`id`, `des`) VALUES
-(1, 'Domestic Violence'),
-(2, 'Murder Case'),
-(3, 'Assault'),
-(4, 'Theft Case'),
-(5, 'Defilement'),
-(6, 'Robbing'),
-(7, 'Fraud'),
-(8, 'Others');
+CREATE TABLE `hearings` (
+  `id` int(11) NOT NULL,
+  `case_id` varchar(30) DEFAULT NULL,
+  `court_statement` text DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `staff_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,6 +137,7 @@ CREATE TABLE `investigation` (
 
 CREATE TABLE `prev_complain` (
   `id` int(11) NOT NULL,
+  `subject` text DEFAULT NULL,
   `comp_name` varchar(100) DEFAULT NULL,
   `tel` varchar(10) DEFAULT NULL,
   `occupation` varchar(20) DEFAULT NULL,
@@ -150,12 +151,21 @@ CREATE TABLE `prev_complain` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `prev_complain`
+-- Table structure for table `support`
 --
 
-INSERT INTO `prev_complain` (`id`, `comp_name`, `tel`, `occupation`, `loc`, `addrs`, `age`, `gender`, `date_added`, `NID`, `statement`, `status`) VALUES
-(1, 'habdajhsia  o aishia', '21212121', 'student', 'abc', 'abuashs a sh ia asia', 12, 'Male', '2022-12-22 04:51:42', 1234, 'ijsaidjisj dasod jsaopjd osad  dsad sada s', 0);
+CREATE TABLE `support` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `tel` varchar(20) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `nid` varchar(20) NOT NULL,
+  `issue` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -188,6 +198,12 @@ INSERT INTO `userlogin` (`id`, `staffid`, `status`, `password`, `surname`, `othe
 --
 
 --
+-- Indexes for table `archrive`
+--
+ALTER TABLE `archrive`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `case_table`
 --
 ALTER TABLE `case_table`
@@ -212,6 +228,12 @@ ALTER TABLE `crime_type`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hearings`
+--
+ALTER TABLE `hearings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `investigation`
 --
 ALTER TABLE `investigation`
@@ -221,6 +243,12 @@ ALTER TABLE `investigation`
 -- Indexes for table `prev_complain`
 --
 ALTER TABLE `prev_complain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `support`
+--
+ALTER TABLE `support`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -234,34 +262,52 @@ ALTER TABLE `userlogin`
 --
 
 --
+-- AUTO_INCREMENT for table `archrive`
+--
+ALTER TABLE `archrive`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `case_table`
 --
 ALTER TABLE `case_table`
-  MODIFY `caseid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `caseid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `court`
 --
 ALTER TABLE `court`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `crime_type`
 --
 ALTER TABLE `crime_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hearings`
+--
+ALTER TABLE `hearings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `investigation`
 --
 ALTER TABLE `investigation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prev_complain`
 --
 ALTER TABLE `prev_complain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `support`
+--
+ALTER TABLE `support`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
