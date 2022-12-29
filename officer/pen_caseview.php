@@ -24,13 +24,12 @@ include('header.php');
 	    <tr>
 	        <th>S/N</th>
 	        
-	         <th>Date Of Application</th>
+	        <th>Date Of Application</th>
 	        <th ><center>Name</center></th>
+			<th><center>NID</center></th>
 	        <th><center>Mobile</center></th>
-	        <th><center>NID</center></th>
-	        <th><center>Statement</center></th>
-	        <th><center>Statement</center></th>
-	        <th><center>Action</center></th>
+	        <th><center>Subject</center></th>
+	        <th><center>Details</center></th>
 	    </tr>
 	</thead>
     <tbody>
@@ -48,24 +47,13 @@ include('header.php');
        
         <td><?php echo $row['date_added'];?></td> 
 		<td><?php echo $row['comp_name'];?></td>
-		<td><?php echo $row['tel']; ?></td>  
 		<td><?php echo $row['NID']; ?></td>
-		<td><?php echo $row['statement']; ?></td>
-		<td><?php echo $row['addrs']; ?></td>
+		<td><?php echo $row['tel']; ?></td>  
+		<td><?php echo $row['subject']; ?></td>
 		
 		<td class="empty" width="">
-		<form method="post">
-		<button type="button" name="app" data-toggle="modal" data-target="#<?php echo $row['case_id'];?>" data-placement="left" title="Click to edit"   class="btn btn-success"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-        </form>
-            <?php 
-                if(isset($_POST['app'])){
-                    $sql = "UPDATE prev_complain SET status='1' WHERE id='$id'";
-                    require_once("mysql.php");
-                    if (mysqli_query($dbc, $sql)) {
-                        echo "<script> alert('Case ID will notify to the user soon.') </script>";
-                    }
-                }
-            ?> 
+		<a href="pen_casedetails.php?id=<?php echo $id; ?>">View</a>
+            
 		</td>
 		</tr>
 	<?php } ?>    

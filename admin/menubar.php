@@ -85,8 +85,8 @@
 					<div class="col-md-3">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h3 class="panel-title"> <a href="index.php">
-									<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Customer Support</a>
+								<h3 class="panel-title"> <a href="support.php">
+									<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Support</a>
 							</div>
 							
 						</div>
@@ -95,7 +95,7 @@
 					<div class="col-md-3">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h3 class="panel-title"> <a href="addstaff.php">
+								<h3 class="panel-title"> <a href="court_case.php">
 									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   
 								Court</a>
@@ -108,10 +108,10 @@
 					<div class="col-md-3">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h3 class="panel-title"> <a href="user.php">
+								<h3 class="panel-title"> <a href="hearing_info1.php">
 									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   
-								Hearing Dates</a>
+								Hearing Info</a>
 								
 								</h3>
 							</div>

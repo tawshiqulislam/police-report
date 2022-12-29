@@ -114,7 +114,7 @@ include('dbconnect.php');
 								<div class="form-row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<label for="">Location:</label>
+											<label for="">City:</label>
 											<input type="text" name="loc" class="form-control" id="loc" placeholder="Enter Location"  required>
 										</div>
 									</div>

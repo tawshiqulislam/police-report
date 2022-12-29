@@ -49,7 +49,7 @@ include('header.php');
        
         <td><?php echo $row['case_id'];?></td> 
 		<td><?php echo $row['case_type'];?></td>
-		<td><?php echo $row['date_added']; ?></td>  
+		<td><?php echo date('M j Y g:i A', strtotime($row['date_added'])); ?></td>  
 		<td><?php echo $row['staffid']; ?></td>
 		<td><?php echo $row['cid']; ?></td>
 		<td><?php echo $row['status']; ?></td>

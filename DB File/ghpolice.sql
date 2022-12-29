@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2022 at 06:19 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 26, 2022 at 04:21 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -80,6 +80,13 @@ CREATE TABLE `court` (
   `next_hearing_date` date DEFAULT NULL,
   `hearing_info` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `court`
+--
+
+INSERT INTO `court` (`id`, `case_id`, `next_hearing_date`, `hearing_info`) VALUES
+(1, 210728101, '0000-00-00', 'pending');
 
 -- --------------------------------------------------------
 
@@ -236,7 +243,7 @@ ALTER TABLE `case_table`
 -- AUTO_INCREMENT for table `court`
 --
 ALTER TABLE `court`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `crime_type`

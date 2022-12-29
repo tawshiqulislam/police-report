@@ -231,8 +231,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <form class="navbar-form mb-5 p-3" role="search">
-              <input class="form-control m-2" type="search" style="width:620px; height:47px; border-radius:10px;" placeholder="Search for Services" aria-label="Search">
+            <form class="navbar-form mb-5 p-3" role="search" method="get" action="hearing_case_details.php">
+              <input class="form-control m-2" type="search" style="width:620px; height:47px; border-radius:10px;" placeholder="Search for Services" aria-label="Search" placeholder="Enter Case ID for Case Progress" name="case_id">
 
               <button type="submit" name="search" class="btn btn-warning form-control" style="width:80px; height:42px; border-radius:10px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
             </form>
@@ -326,16 +326,10 @@
 
   <section id="footer-section">
     <div class="container text-center footer">
-      <h3 class="text-center contact">Contact Us</h3>
+      <h3 class="text-center contact">Send A Message</h3>
       <ul class="mb-5">
         <li>
-          <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
-        </li>
-        <li>
-          <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
-        </li>
-        <li>
-          <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
+          <a href="user_support.php"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
         </li>
       </ul>
 

@@ -53,7 +53,7 @@ $status='';
 			?>
 			 			 <table class="table">
 			 			 	<tr>
-			 			 		<td width="160px">Case Number:</td><td> <input type="text" value="<?php echo $caseid?>" readonly="" name="caseid"> </td>
+			 			 		<td width="160px">Case Number:</td><td> <input type="text" value="<?php echo $caseid?>" readonly name="caseid"> </td>
 			 			 	</tr>
 			 			 	<tr>
 			 			 		<td>Name:</td><td><?php echo $row['comp_name']?></td>

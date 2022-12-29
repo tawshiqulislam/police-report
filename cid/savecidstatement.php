@@ -18,8 +18,8 @@ if(session_status() == PHP_SESSION_NONE)
 $errors = array();
 
   //Variables to hold the form data
- $statement='';  $status=''; $caseid=''; 
- echo $complete_date=date('l jS \of F Y h:i:s A');
+ $statement='';  $status=''; 
+ echo $complete_date=date('y/m/d');
 
 
               if(empty($_POST['statement'])){
@@ -59,24 +59,21 @@ $errors = array();
                     }
 
                  else{  
-
-                        $sql = "UPDATE case_table SET statement=?,status=?,complete_date=? WHERE case_id=?";
-
-
-                            $q = $conn->prepare($sql);
-                           $success= $q -> execute(array($statement,$status,$complete_date, $caseid));
-                           
-                         if($success)
-
-                         {
-                            
-                             echo "<script>alert('The Statement saved successfully')</script>";
-                            echo "<script>window.open('index.php','_self')</script>";
-    
-
-                                //echo "<script>alert('You have voted already')</script>";
-                             // header( 'Location: cidcaseview.php?' );
-                      }
+                  require_once('mysql.php');
+                    $qq = mysqli_query($dbc,"INSERT INTO `archrive`(`case_id`, `cid`, `report`) VALUES ('$caseid','$staffid','$statement')");
+                    $sql = "UPDATE case_table SET statement=?,status=?,complete_date=? WHERE case_id=?";
+                    $q = $conn->prepare($sql);
+                    $success= $q -> execute(array($statement,$status,$complete_date, $caseid));
+                    if($success && $qq)
+                    {
+                        
+                        echo "<script>alert('The Statement saved successfully')</script>";
+                        echo "<script>window.open('index.php','_self')</script>";
+                    }
+                    else{
+                        echo "<script>alert('Try Again..!!!')</script>";
+                        header( 'Location: cidcaseview.php?' );
+                    }
                }
 
 

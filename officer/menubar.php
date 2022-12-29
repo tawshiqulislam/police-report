@@ -34,8 +34,8 @@
 			<div class="col-md-3">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title"> <a href="index.php">
-								<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+						<h3 class="panel-title"> <a href="court_hearing.php">
+								<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Court Hearing</a>
 					</div>
 
 				</div>
@@ -74,6 +74,16 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"> <a href="pen_caseview.php">
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span> View Pending Cases</a>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title"> <a href="support.php">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Support</a>
 					</div>
 
 				</div>

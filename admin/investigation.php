@@ -39,7 +39,7 @@ $status='';
 				
 					  	<div class="panel-heading">
 		
-					  		<h3 class="panel-title">Stattement</h3>
+					  		<h3 class="panel-title">Statement</h3>
 					  	</div>
 			<div class="panel-body">
 

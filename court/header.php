@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Police Report and Crime Report Management System</title>
+    <title>Police Report and Crime Report Management System -Court Page</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -18,10 +18,13 @@
   </head>
 <body>
 
-<nav class="navbar navbar-inverse" style="background-color:darkslateblue;color: white; margin-bottom: 130px;">
+<nav class="navbar" style="background-color:#4E55E6;color: white; margin-bottom: 130px;">
   <div class="container-fluid">
-    <!-- <a class="navbar-brand" href="#"> <img  src="img/logo.png" class="rounded"></a> -->
+    <!-- <a class="navbar-brand" href="#"> <img  src="admin/img/logo.png" class="rounded"></a> -->
+    
     <h3 class="text-center">Police Report and Crime Report Management System</h3>
+    
+   
     
   </div>
 </nav>

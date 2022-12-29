@@ -11,7 +11,7 @@ include('dbconnect.php');
 	
 	
 	
-		$query=mysqli_query($dbcon,"select * from userlogin where staffid='$id' and password=SHA1('$old')")or die(mysqli_error());
+		$query=mysqli_query($dbcon,"select * from userlogin where staffid='$id' and password=SHA1('$old')")or die(mysqli_error($dbcon));
 			
 				$count=mysqli_num_rows($query);
 				

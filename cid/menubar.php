@@ -14,6 +14,7 @@
 						
 						$query= mysqli_query($dbcon,"select * from userlogin where staffid = '$session_id'")or die(mysqli_error($dbcon));
 						$row = mysqli_fetch_array($query);
+						$staffid = $row['staffid'];
 						
 						?>
                             <span class="pull-right">
@@ -48,6 +49,16 @@
 							<div class="panel-heading">
 								<h3 class="panel-title"> <a href="index.php">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span> View Assigned Cases</a>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"> <a href="court_hearing.php">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Court Hearing</a>
 							</div>
 							
 						</div>
